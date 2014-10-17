@@ -79,7 +79,6 @@ class PlainLibrary
         $diff = $_SESSION['now_t']->diff($_SESSION['dep']);
         
         $track = round(((1440*$diff->d+60*$diff->h+$diff->i+0.017*$diff->s)*$json_a['speed']/60),3);
-        echo $track;
         $percent = round((100*$track/$this->getDistance()),2);
         return $percent;
     }       
