@@ -44,17 +44,28 @@ class IndexController extends Zend_Controller_Action
         
         if ($this->_request->isPost()) {
             $formData = $this->_request->getPost();
-            if ($form->isValid($formData)) {
+            if ($form->isValid($formData)) {   
+                if (session_status() !== PHP_SESSION_ACTIVE) {session_start();}
+                $jm = json_decode(file_get_contents($_SESSION['ffPath']),true);
+                $len=count($jm['tr']);
                 $part = $form->getValue('interval');
                 $point = $form->getValue('point'); 
                 $datetime = new DateTime($form->getValue('datetime_d'));
-                $this->view->v1 =  round($this->getLibrary()->getPartDistance($part),2);
-                $this->view->v2 =  round($this->getLibrary()->getDistance(),2);
-                $date_part = $this->getLibrary()->getPartTimeArrival($datetime, $point); 
-                $this->view->v3 = $date_part->format('Y-m-d H:i:s');
-                $datetime2 = new DateTime($form->getValue('datetime_d'));
-                $date_all = $this->getLibrary()->getTimeArrival($datetime2); 
-                $this->view->v4 = $date_all->format('Y-m-d H:i:s');
+                if ($part < $len  && $point < $len) {
+                    $this->view->v1 =  round($this->getLibrary()->getPartDistance($part),2);
+                    $this->view->v2 =  round($this->getLibrary()->getDistance(),2);
+                    $date_part = $this->getLibrary()->getPartTimeArrival($datetime, $point); 
+                    $this->view->v3 = $date_part->format('Y-m-d H:i:s');
+                    $datetime2 = new DateTime($form->getValue('datetime_d'));
+                    $date_all = $this->getLibrary()->getTimeArrival($datetime2); 
+                    $this->view->v4 = $date_all->format('Y-m-d H:i:s');
+                } else {
+                    $this->view->v1='This point or interval does not exist';
+                    $this->view->v2='This point or interval does not exist';
+                    $this->view->v3='This point or interval does not exist';
+                    $this->view->v4='This point or interval does not exist';
+                }  
+                
             } else {
                 $form->populate($formData);
             }                
