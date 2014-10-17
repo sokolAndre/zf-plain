@@ -1,0 +1,26 @@
+<?php
+// Создаём заголовок страницы, который загрузится в layout
+$this->title = "Plane Test";
+$this->headTitle($this->title);
+echo $this->form ;
+?>
+
+<table>
+    <tr>
+        <td>interval distance (km)</td>
+        <td><?php echo $this->escape($this->v1);?></td>
+    </tr>
+    <tr>
+        <td>all distance (km)</td>
+        <td><?php echo $this->escape($this->v2);?></td>
+    </tr>
+    <tr>
+        <td>time of arrival in the point</td>
+        <td><?php echo $this->escape($this->v3);?></td>
+    </tr>
+    <tr>
+        <td>time of arrival (all)</td>
+        <td><?php echo $this->escape($this->v4);?></td>
+    </tr>
+</table>  
+<a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'simulation'));?>" class="f-bu f-bu-warning">Start simulation</a>

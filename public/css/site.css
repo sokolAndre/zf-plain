@@ -1,0 +1,32 @@
+body,html {
+    margin: 0 5px;
+    font-family: Verdana,sans-serif;
+}
+h1 {
+    font-size: 1.4em;
+    color: #000080;
+}
+a {
+    color: #000080;
+}
+
+/* Table */
+th {
+    text-align: left;
+}
+td, th {
+    padding-right: 40px;
+	background-color:#E8FBE9;
+    border: 2px solid #E7EFE0;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    color:#666;
+    text-shadow:1px 1px 1px #fff;	
+}
+
+
+
+
+
+ 

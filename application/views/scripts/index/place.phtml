@@ -1,0 +1,24 @@
+<?php
+// Создаём заголовок страницы, который загрузится в layout
+$this->title = "Plane Simulation";
+$this->headTitle($this->title);
+echo $this->form ;
+?>
+
+<p>the percentage value is updated automatically every 20s</p>
+<p>also you can click the 'getPlace' link</p>
+<table>
+    <tr>
+        <td>Percent (of all track)</td>
+        <td><?php echo $this->escape($this->v5);?></td>
+    </tr>
+</table>  
+<a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'place'));?>" id="place_href" class="f-bu f-bu-warning">getPlace</a>
+ 
+<script type="text/javascript">
+   function func(){
+      location.reload();   
+         return true;
+        };   
+setTimeout(func, 20000);
+</script>  

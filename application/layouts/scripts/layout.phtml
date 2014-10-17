@@ -1,0 +1,54 @@
+<?php
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+    $this->headTitle()->setSeparator(' - ');
+    $this->headTitle('Plane_Test');
+    
+    echo $this->doctype();
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <?=$this->jQuery()?>
+    <link rel="stylesheet" type="text/css" href="/js/jquery.datetimepicker.css"/ >
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.datetimepicker.js"></script>
+    <link href="/css/framework.css" rel="stylesheet">
+    <?php
+        echo $this->headMeta();
+    ?>
+    <?php
+        echo $this->headTitle();
+    ?>
+
+
+</head>
+
+<body>
+    <div id="content" class="g">
+        <div class="g-row">
+            <div class="g-7">
+                <h1>
+                <?php
+                    // Выводим заголовок странице, который будем формировать в каждом view
+                    echo $this->escape($this->title);
+                ?>
+                </h1>
+                <?php
+                    // Данная запись выводит содержимое view
+                    echo $this->layout()->content;
+                ?>
+            </div>
+        </div> 
+    </div>
+    
+    <script type="text/javascript">
+    jQuery('#datetime_d').datetimepicker({
+        format:'d.m.Y H:i',
+        lang:'en'
+    });
+    </script>   
+    
+    
+</body>    
+   
+</html>
